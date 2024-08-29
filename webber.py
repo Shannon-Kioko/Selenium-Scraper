@@ -108,14 +108,6 @@ try:
                         time.sleep(5)  # Ensures row is fully visible
 
                         # Scroll each row into view
-                        # browser.execute_script("arguments[0].scrollIntoView(true);", row)
-
-                        # Find the roles link
-                        # roles_link = wait.until(EC.visibility_of_element_located(
-                        #     (By.CSS_SELECTOR, "td.c3 span.inplaceeditable a.quickeditlink.aalink")))
-
-                        # roles_link = wait.until(EC.element_to_be_clickable(
-                        #     (By.CSS_SELECTOR, "td.c3 span.inplaceeditable a.quickeditlink.aalink")))
                         roles_link = row.find_element(
                             By.CSS_SELECTOR, "td.c3 span.inplaceeditable a.quickeditlink.aalink")
                         # Get the text of the roles link
@@ -130,9 +122,6 @@ try:
                         print("Just checked role text")
 
                         # The click to edit the role
-                        # ActionChains(browser).move_to_element(roles_link).click().perform()
-                        # roles_link.click()
-                        # print("Clicked roles link")
                         browser.execute_script("arguments[0].click();", roles_link)
                         print("Clicked roles link using JavaScript")
                         time.sleep(0.5)
@@ -141,21 +130,15 @@ try:
                         input_box = wait.until(EC.element_to_be_clickable(
                             (By.CSS_SELECTOR, "input.form-control")))
 
-                        # input_box.send_keys("Student")
                         print("inPppppppput box 🍱")
                         time.sleep(0.2)
-                        # input_box.click()
-                        # browser.execute_script("arguments[0].dispatchEvent(new Event('focus', { bubbles: true }));", input_box)
+                        
                         browser.execute_script(
                             "arguments[0].dispatchEvent(new Event('input', { bubbles: true }));", input_box)
-
-                        # input_box.clear()
-                        # input_box.send_keys("Student")
 
                         browser.execute_script(
                             "arguments[0].value = 'Student';", input_box)
 
-                        # browser.execute_script("arguments[0].value = 'S';", input_box)
                         print("🐍🐍")
 
                         # Optional: Wait for the dropdown to populate
@@ -164,11 +147,6 @@ try:
                         input_box.send_keys(Keys.DOWN)
                         time.sleep(0.1)
                         input_box.send_keys(Keys.RETURN)
-
-                        # Simulate clicking the input box using execute_script
-                        # browser.execute_script("arguments[0].click();", input_box)
-                        # # This line simulates pressing the Enter key in the input box
-                        # browser.execute_script("arguments[0].dispatchEvent(new KeyboardEvent('keydown', {'key': 'Enter'}));", input_box)
                         print("🚪🚪🚪")
 
                         # Wait for change
@@ -210,8 +188,8 @@ try:
 except Exception as e:
     print(f"An error occurred: {e}")
 
-# finally:
-#     title = browser.title
-#     print(title)
-#     if browser:  # Only quit if the browser was successfully initialized
-#         browser.quit()
+finally:
+    title = browser.title
+    print(title)
+    if browser:  # Only quit if the browser was successfully initialized
+      browser.quit()
