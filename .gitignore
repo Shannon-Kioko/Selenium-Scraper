@@ -1,0 +1,24 @@
+# Ignore files related to API keys
+.env
+
+# Ignore specific python files
+scroller.py
+between.py
+jibu_scraper.py
+
+# Ignore virtual environment
+.venv
+
+# Ignore common Python files and directories
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.env
+*.venv
+*.egg
+*.egg-info
+dist/
+build/
+*.log
